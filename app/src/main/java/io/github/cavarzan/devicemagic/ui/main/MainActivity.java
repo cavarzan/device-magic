@@ -2,10 +2,12 @@ package io.github.cavarzan.devicemagic.ui.main;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
@@ -79,6 +81,14 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new DownloadAdapter();
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (adapter.getItemCount() == 0 && messageView.getVisibility() == View.GONE) {
+            swipeRefreshLayout.postDelayed(() -> swipeRefreshLayout.setRefreshing(true), 1000);
+        }
     }
 
     protected int getLayoutResource() {
