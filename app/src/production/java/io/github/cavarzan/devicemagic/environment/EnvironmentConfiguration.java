@@ -11,7 +11,7 @@ import javax.inject.Singleton;
 import rx.schedulers.Schedulers;
 
 import timber.log.Timber;
-import io.github.cavarzan.devicemagic.util.logging.CrashReportingTree; 
+import io.github.cavarzan.devicemagic.util.logging.CrashReportingTree;
 
 
 @Singleton
@@ -28,11 +28,11 @@ public class EnvironmentConfiguration {
     public void configure() {
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
         StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
-        
+
         if (BuildConfig.DEBUG) {
-           Timber.plant(new Timber.DebugTree());
+            Timber.plant(new Timber.DebugTree());
         } else {
-           Timber.plant(new CrashReportingTree());
+            Timber.plant(new CrashReportingTree());
         }
     }
 
