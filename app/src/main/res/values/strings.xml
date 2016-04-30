@@ -1,0 +1,6 @@
+<resources>
+  <string name="app_name">Device Magic</string>
+  <string name="try_again">Try Again</string>
+  <string name="error_loading_data_please_try_again">Error loading data, please try again =(</string>
+  <string name="no_data_available">No data available =(</string>
+</resources>

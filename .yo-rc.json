@@ -1,0 +1,26 @@
+{
+  "generator-android-hipster": {
+    "appPackage": "io.github.cavarzan.devicemagic",
+    "appName": "DeviceMagic",
+    "language": "java",
+    "nucleus": true,
+    "mvp": "nucleus",
+    "imageLib": "none",
+    "picasso": false,
+    "glide": false,
+    "eventbus": false,
+    "mixpanel": false,
+    "timber": true,
+    "jodatime": false,
+    "threetenabp": false,
+    "jodamoney": false,
+    "butterknife": true,
+    "androidTargetSdkVersion": "23",
+    "minSdk": 15,
+    "calligraphy": false,
+    "playServices": [],
+    "stetho": false,
+    "printview": false,
+    "autoparcel": true
+  }
+}
