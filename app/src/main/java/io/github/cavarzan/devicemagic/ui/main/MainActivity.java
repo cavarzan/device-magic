@@ -46,6 +46,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     @Bind(R.id.message_frame)
     View messageView;
 
+    @Bind(R.id.loading_frame)
+    View loadingView;
+
     @Bind(R.id.message_text)
     TextView messageText;
 
@@ -83,14 +86,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         recyclerView.setAdapter(adapter);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (adapter.getItemCount() == 0 && messageView.getVisibility() == View.GONE) {
-            swipeRefreshLayout.postDelayed(() -> swipeRefreshLayout.setRefreshing(true), 1000);
-        }
-    }
-
     protected int getLayoutResource() {
         return R.layout.activity_main;
     }
@@ -102,6 +97,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     @Override
     public void dataAvailable(List<Download> list) {
+        loadingView.setVisibility(View.GONE);
         swipeRefreshLayout.setRefreshing(false);
         adapter.clear();
         adapter.addAll(list);
@@ -109,6 +105,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     @Override
     public void dataLoadError() {
+        loadingView.setVisibility(View.GONE);
         swipeRefreshLayout.setRefreshing(false);
         adapter.clear();
         messageView.setVisibility(View.VISIBLE);
@@ -138,6 +135,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     @Override
     public void emptyResult() {
+        loadingView.setVisibility(View.GONE);
         swipeRefreshLayout.setRefreshing(false);
         adapter.clear();
         messageView.setVisibility(View.VISIBLE);

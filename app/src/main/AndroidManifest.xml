@@ -15,7 +15,9 @@
         <activity
             android:name="io.github.cavarzan.devicemagic.ui.main.MainActivity"
             android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
             android:launchMode="singleTop">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
