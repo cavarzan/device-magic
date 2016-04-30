@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.apk
 *.iml
 .gradle
@@ -6,6 +7,8 @@
 local.properties
 build/
 
+=======
+>>>>>>> 155f28f605db38c1d8cae8962d4b3629dda3552c
 # Built application files
 *.apk
 *.ap_
