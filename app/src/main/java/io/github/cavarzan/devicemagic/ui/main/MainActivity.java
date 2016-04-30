@@ -97,16 +97,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     @Override
     public void dataAvailable(List<Download> list) {
-        loadingView.setVisibility(View.GONE);
-        swipeRefreshLayout.setRefreshing(false);
         adapter.clear();
         adapter.addAll(list);
     }
 
     @Override
     public void dataLoadError() {
-        loadingView.setVisibility(View.GONE);
-        swipeRefreshLayout.setRefreshing(false);
         adapter.clear();
         messageView.setVisibility(View.VISIBLE);
     }
@@ -124,19 +120,20 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     }
 
     private void refresh() {
+        loadingView.setVisibility(View.GONE);
         executingRequest();
         getPresenter().load();
     }
 
     @Override
     public void requestFinished() {
+        loadingView.setVisibility(View.GONE);
         messageView.setVisibility(View.GONE);
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
     public void emptyResult() {
-        loadingView.setVisibility(View.GONE);
-        swipeRefreshLayout.setRefreshing(false);
         adapter.clear();
         messageView.setVisibility(View.VISIBLE);
         messageText.setText(R.string.no_data_available);
